@@ -1,0 +1,16 @@
+public class Estagiario extends Funcionario {
+
+    public Estagiario(String nome, double salarioBase) {
+        super(nome, salarioBase);
+    }
+
+    @Override
+    public double calcularBonus() {
+        return getSalarioBase() * 0.05;
+    }
+
+    @Override
+    public double calcularDesconto() {
+        return getSalarioBase() * 0.02;
+    }
+}
