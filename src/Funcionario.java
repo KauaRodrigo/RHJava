@@ -4,6 +4,14 @@ public abstract class Funcionario implements Relatorio {
     private double  salarioBase;
 
     public Funcionario(String nome, double salarioBase) {
+        if (nome == null || nome.isBlank()) {
+            throw new IllegalArgumentException("Nome do funcionário não pode ser vazio.");
+        }
+
+        if (salarioBase < 0) {
+            throw new IllegalArgumentException("Salário base não pode ser negativo.");
+        }
+
         this.nome = nome;
         this.salarioBase = salarioBase;
     }
@@ -24,6 +32,7 @@ public abstract class Funcionario implements Relatorio {
 
     public abstract double calcularDesconto();
 
+    @Override
     public void mostrarRelatorio() {
         System.out.printf("""
                 Nome: %s

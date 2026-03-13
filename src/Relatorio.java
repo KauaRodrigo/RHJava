@@ -1,5 +1,5 @@
 public interface Relatorio {
 
-    public void mostrarRelatorio();
+    void mostrarRelatorio();
 
 }
