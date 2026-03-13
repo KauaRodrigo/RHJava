@@ -1,3 +1,5 @@
+package models;
+
 public class Estagiario extends Funcionario {
 
     public Estagiario(String nome, double salarioBase) {

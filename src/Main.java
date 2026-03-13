@@ -1,7 +1,19 @@
+import models.Desenvolvedor;
+import models.Diretor;
+import models.Estagiario;
+import models.Gerente;
+
 public class Main {
 
     public static void main(String[] args) {
         Empresa ipm = new Empresa("IPM");
+        Departamento fabrica = new Departamento("Fábrica");
+        Departamento diretoria = new Departamento("Diretoria");
+
+        ipm.adicionarDepartamento(diretoria);
+        ipm.adicionarDepartamento(fabrica);
+
+        Diretor aldo = new Diretor("Aldo", 20000);
 
         Desenvolvedor kaua    = new Desenvolvedor("Kauã", 4000);
         Desenvolvedor evandro = new Desenvolvedor("Evandro", 4500);
@@ -12,15 +24,19 @@ public class Main {
         Estagiario ruan    = new Estagiario("Ruan", 1500);
         Estagiario matheus = new Estagiario("Matheus", 1800);
 
-        ipm.adicionarFuncionario(kaua);
-        ipm.adicionarFuncionario(evandro);
-        ipm.adicionarFuncionario(diego);
-        ipm.adicionarFuncionario(kananda);
-        ipm.adicionarFuncionario(ruan);
-        ipm.adicionarFuncionario(matheus);
+        diretoria.adicionarFuncionario(aldo);
+        fabrica.adicionarFuncionario(kaua);
+        fabrica.adicionarFuncionario(evandro);
+        fabrica.adicionarFuncionario(diego);
+        fabrica.adicionarFuncionario(kananda);
+        fabrica.adicionarFuncionario(ruan);
+        fabrica.adicionarFuncionario(matheus);
 
-        ipm.listarFuncionarios();
-        ipm.mostrarFolhaPagamento();
+        fabrica.listarFuncionarios();
+        fabrica.mostrarFolha();
+
+        ipm.mostrarEmpresa();
+        ipm.mostrarFolhaGeral();
     }
 
 }

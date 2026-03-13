@@ -4,7 +4,7 @@ import java.util.List;
 public class Empresa {
 
     private final String nome;
-    private final List<Funcionario> funcionarios = new ArrayList<>();
+    private final List<Departamento> departamentos = new ArrayList<>();
 
     public Empresa(String nome) {
         if(nome == null || nome.isBlank()) {
@@ -14,33 +14,32 @@ public class Empresa {
         this.nome = nome;
     }
 
-    public void adicionarFuncionario(Funcionario funcionario) {
-        if(funcionario == null) {
-            throw new IllegalArgumentException("Funcionário não pode ser nulo");
+    public void adicionarDepartamento(Departamento departamento) {
+        if(departamento == null) {
+            throw new IllegalArgumentException("Departamento não pode ser nulo");
         }
 
-        this.funcionarios.add(funcionario);
+        this.departamentos.add(departamento);
     }
 
-    public void listarFuncionarios() {
-        System.out.println("Funcionários da Empresa: " + nome + ":");
-
-        for(Funcionario f : this.funcionarios) {
-            System.out.printf("""
-                    Nome: %s
-                    %n""", f.getNome());
+    public void mostrarEmpresa() {
+        System.out.println("======= EMPRESA ========");
+        for (Departamento d : departamentos) {
+            System.out.printf("Departamento: %s%n", d.getNome());
+            d.listarFuncionarios();
         }
     }
 
-    public void mostrarFolhaPagamento() {
-        double totalSalarios = 0f;
+    public void mostrarFolhaGeral() {
+        double totalGeral = 0.0;
+        System.out.println("======= FOLHA GERAL ========");
 
-        for(Funcionario f : this.funcionarios) {
-            f.mostrarRelatorio();
-            totalSalarios += f.calcularSalarioFinal();
+        for (Departamento d : departamentos) {
+            System.out.printf("Departamento: %s%n", d.getNome());
+            totalGeral += d.mostrarFolha();
         }
 
-        System.out.printf("Total gasto: R$ %.2f%n", totalSalarios);
+        System.out.println("TOTAL EMPRESA: R$ " + totalGeral);
     }
 
 }

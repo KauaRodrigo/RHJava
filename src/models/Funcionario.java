@@ -1,3 +1,7 @@
+package models;
+
+import interfaces.Relatorio;
+
 public abstract class Funcionario implements Relatorio {
 
     private String nome;
@@ -35,13 +39,14 @@ public abstract class Funcionario implements Relatorio {
     @Override
     public void mostrarRelatorio() {
         System.out.printf("""
+                Cargo: %s
                 Nome: %s
                 Salário base: R$ %.2f
                 Bônus: R$ %.2f
                 Desconto: R$ %.2f
                 Salário final: R$ %.2f
                 ------------------------------------------------
-                %n""", getNome(), getSalarioBase(), calcularBonus(), calcularDesconto(), calcularSalarioFinal());
+                %n""", getClass().getSimpleName(), getNome(), getSalarioBase(), calcularBonus(), calcularDesconto(), calcularSalarioFinal());
     }
 
 }
